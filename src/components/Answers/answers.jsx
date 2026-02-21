@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./answers.module.css";
 
-export const Answers = ({ answers }) => {
+export const Answers = ({ answers, correctCounter, setCorrectCounter }) => {
   const questionPrefix = ["A.", "B.", "C.", "D."];
   const availableAnswers = answers.answers;
   const [answerPressed, setAnswerPressed] = useState(null);
@@ -12,6 +12,8 @@ export const Answers = ({ answers }) => {
     chosenAnswer = availableAnswers.find(
       (answer) => answer.answer === chosenAnswer,
     );
+    if (chosenAnswer.isCorrect) setCorrectCounter(correctCounter + 1);
+    
     setAnswerPressed(chosenAnswer);
   };
 
@@ -20,7 +22,7 @@ export const Answers = ({ answers }) => {
     if (answer.isCorrect) return styles.correct;
     if (answerPressed === answer) return styles.incorrect;
     return "";
-  }
+  };
 
   return (
     <div className={styles.questionLayout}>
