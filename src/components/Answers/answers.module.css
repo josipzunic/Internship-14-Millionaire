@@ -1,0 +1,25 @@
+.questionLayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+.answers {
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.correct {
+    transition: ease-in 0.5s;
+    background-color: green;
+    border-color: green;
+}
+
+.incorrect {
+    transition: ease-in 0.5s;
+    background-color: red;
+    border-color: red;
+}
