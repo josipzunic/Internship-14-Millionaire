@@ -18,7 +18,7 @@ export const Sidebar = ({ correctCounter }) => {
                 : ""
             }
           >
-            {levels[levels.length - index - 1]}
+            {levels[levels.length - index - 1]} &#8364;
           </li>
         ))}
       </ul>
