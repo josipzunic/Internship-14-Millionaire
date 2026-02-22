@@ -28,7 +28,7 @@ export const Answers = ({
   const [fiftyFiftyResult, setFiftyFiftyResult] = useState(null);
   const displayedAnswers = fiftyFiftyResult ?? availableAnswers;
   const timeUntilNextQuestion = 3;
-  const textAccompaningTime = "Time until next question";
+  const [timerText, setTimerText] = useState("Time until next question");
   const [timer, setTimerNextQuestion] = useState(timeUntilNextQuestion);
 
   const handleFiftyFifty = () => {
@@ -55,8 +55,12 @@ export const Answers = ({
     chosenAnswer = asnwersArray.find(
       (answer) => answer.answer === chosenAnswer,
     );
+    setTimerText(chosenAnswer.isCorrect ? "Time until next question" : "Game over in");
     if (chosenAnswer.isCorrect) setCorrectCounter(correctCounter + 1);
-    else setUserAnsweredWrong(!userAnsweredWrong);
+    else
+      setTimeout(() => {
+        setUserAnsweredWrong(!userAnsweredWrong);
+      }, timeUntilNextQuestion * 1000);
 
     setAnswerPressed(chosenAnswer);
     setTimeout(() => {
@@ -98,7 +102,7 @@ export const Answers = ({
       ></Jokers>
       {answerPressed && (
         <Timer
-          textAccompaningTime={textAccompaningTime}
+          textAccompaningTime={timerText}
           timer={timer}
           setTimer={setTimerNextQuestion}
           className={styles.timerNormal}

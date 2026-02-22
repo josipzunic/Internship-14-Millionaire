@@ -41,6 +41,11 @@
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.answers:hover {
+  transform: translateY(-5px);
 }
 
 .correct {

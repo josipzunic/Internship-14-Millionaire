@@ -1,7 +1,6 @@
 import styles from "./endGameDisplay.module.css";
 import { levels, maxReward, safeIndex } from "../../constants/levels";
 
-
 export const EndGameDisplay = ({
   correctCounter,
   setCorrectCounter,
@@ -9,10 +8,11 @@ export const EndGameDisplay = ({
   setGameEnded,
 }) => {
   let answeredCorrectly;
-
   if (correctCounter >= 5 && correctCounter < 10) answeredCorrectly = safeIndex;
   else if (correctCounter === 10) answeredCorrectly = maxReward;
   else answeredCorrectly = 0;
+
+  const amountEarned = answeredCorrectly !== 0 ? levels[answeredCorrectly] : 0;
 
   const playAgain = () => {
     setGameEnded(!gameEnded);
@@ -21,14 +21,16 @@ export const EndGameDisplay = ({
 
   return (
     <div className={styles.endDisplay}>
-      <h1>GAME OVER</h1>
-      <p>
-        PLAYER WON:
-        <span>
-          {`${answeredCorrectly !== 0 ? levels[answeredCorrectly] : 0}`} €
-        </span>
+      <h1 className={styles.gameOver}>GAME OVER</h1>
+      <p className={styles.message}>
+        {amountEarned > 0
+          ? "Congrats! You win:"
+          : "Better luck next time :("}
       </p>
-      <button onClick={playAgain}>PLAY AGAIN</button>
+      <p className={styles.amountEarned}>{amountEarned} €</p>
+      <button onClick={playAgain} className={styles.playAgain}>
+        &gt; PLAY AGAIN &lt;
+      </button>
     </div>
   );
 };

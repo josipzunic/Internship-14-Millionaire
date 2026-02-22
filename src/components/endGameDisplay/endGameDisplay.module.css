@@ -1,12 +1,50 @@
 .endDisplay {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: darkblue;
+  font-family: "Courier New", sans-serif;
+  gap: 2rem;
 }
 
-span {
-    font-size: 1.5rem;
-    margin-left: 0.5rem;
+.gameOver {
+  color: yellow;
+  font-size: 4rem;
+  letter-spacing: 0.3em;
+  margin: 0;
+  border-bottom: 2px solid yellow;
+  padding-bottom: 1rem;
+}
+
+.message {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.amountEarned {
+  color: yellow;
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.playAgain {
+  background: yellow;
+  color: darkblue;
+  border: none;
+  font-family: "Courier New", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  letter-spacing: 0.2em;
+  transition: transform 0.2s ease;
+  margin-top: 2rem;
+}
+
+.playAgain:hover {
+  transform: translateY(-5px);
 }
