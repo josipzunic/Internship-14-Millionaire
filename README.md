@@ -1,16 +1,16 @@
-# React + Vite
+# Internship 14-Millionaire
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Millionaire game built in ReactJS. Answer up to 10 randomly selected physics related questions from a pool of 20 questions and move up the game ladder. Answer all 10 questions correctly to get a congratulations message
 
-Currently, two official plugins are available:
+## Usage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone or download the repository from GitHub
+2. Inside a terminal (recommend using VS code and opening terminal using CTRL+J or Cmd+J on MacOS) run the following command to install all the dependencies
+```
+npm install
+```
+3. Start the server using 
+```
+npm run dev
+```
+4. Copy the url from the terminal into browser url search tab

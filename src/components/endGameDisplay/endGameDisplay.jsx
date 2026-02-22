@@ -23,9 +23,11 @@ export const EndGameDisplay = ({
     <div className={styles.endDisplay}>
       <h1 className={styles.gameOver}>GAME OVER</h1>
       <p className={styles.message}>
-        {amountEarned > 0
-          ? "Congrats! You win:"
-          : "Better luck next time :("}
+        {correctCounter === 10
+          ? "OK Einstein i wasn't aware of your game"
+          : amountEarned > 0
+            ? "Congrats! You win:"
+            : "Better luck next time :("}
       </p>
       <p className={styles.amountEarned}>{amountEarned} €</p>
       <button onClick={playAgain} className={styles.playAgain}>
