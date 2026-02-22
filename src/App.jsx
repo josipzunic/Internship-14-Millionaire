@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.module.css"
 import { GameDisplay } from "./components/gameDisplay/gameDisplay";
 import { StartGameDisplay } from "./components/startGameDisplay/startGameDisplay";
 import { EndGameDisplay } from "./components/endGameDisplay/endGameDisplay";
