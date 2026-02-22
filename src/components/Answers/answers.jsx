@@ -1,6 +1,8 @@
 import styles from "./answers.module.css";
 import { getRandomArrayElement } from "../../helper/helper";
 import { Timer } from "../timer/timer";
+import { shuffleArray } from "../../helper/helper";
+import { useState } from "react";
 
 export const Answers = ({
   answers,
@@ -12,9 +14,10 @@ export const Answers = ({
   setAnswerPressed,
 }) => {
   const questionPrefix = ["A.", "B.", "C.", "D."];
-  const availableAnswers = answers.answers;
-  const time = 3;
+  const [availableAnswers] = useState(() => shuffleArray(answers.answers));
+  const timeUntilNextQuestion = 3;
   const textAccompaningTime = "Time until next question";
+  const [timer, setTimer] = useState(timeUntilNextQuestion);
 
   const getChosenAnswer = (e) => {
     const currentIndex = questions.indexOf(answers);
@@ -32,7 +35,7 @@ export const Answers = ({
     setTimeout(() => {
       setCurrentQuestion(newQuestion);
       setAnswerPressed(null);
-    }, 3000);
+    }, timeUntilNextQuestion * 1000);
   };
 
   const conditionalStyle = (answer) => {
@@ -54,7 +57,12 @@ export const Answers = ({
         </button>
       ))}
       {answerPressed && (
-        <Timer time={time} textAccompaningTime={textAccompaningTime}></Timer>
+        <Timer
+          textAccompaningTime={textAccompaningTime}
+          timer={timer}
+          setTimer={setTimer}
+          className={styles.timerNormal}
+        ></Timer>
       )}
     </div>
   );

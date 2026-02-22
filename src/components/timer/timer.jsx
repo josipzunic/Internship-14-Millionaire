@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export const Timer = ({ time, textAccompaningTime }) => {
-  const [timer, setTimer] = useState(time);
-
+export const Timer = ({ textAccompaningTime, timer, setTimer, className }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((prev) => {
@@ -11,7 +9,11 @@ export const Timer = ({ time, textAccompaningTime }) => {
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [setTimer]);
 
-  return <div>{textAccompaningTime} {timer}</div>;
+  return (
+    <div className={className}>
+      {textAccompaningTime} {timer}
+    </div>
+  );
 };
