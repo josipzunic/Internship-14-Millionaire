@@ -86,6 +86,7 @@ export const Answers = ({
             <button
               className={`${styles.answers} ${conditionalStyle(answer)}`}
               onClick={(e) => getChosenAnswer(e, displayedAnswers)}
+              disabled={!!answerPressed}
             >
               {`${questionPrefix[index]} ${answer.answer}`}
             </button>
