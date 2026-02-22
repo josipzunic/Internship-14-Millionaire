@@ -8,12 +8,17 @@ export const GameDisplay = ({
   setGameEnded,
   gameStarted,
   setGameStarted,
+  correctCounter,
+  setCorrectCounter,
 }) => {
-  const [correctCounter, setCorrectCounter] = useState(0);
+  const [userAnsweredWrong, setUserAnsweredWrong] = useState(false);
   const pointsToWin = 10;
 
   useEffect(() => {
     if (correctCounter === pointsToWin) {
+      setGameEnded(!gameEnded);
+      setGameStarted(!gameStarted);
+    } else if (userAnsweredWrong) {
       setGameEnded(!gameEnded);
       setGameStarted(!gameStarted);
     }
@@ -24,6 +29,7 @@ export const GameDisplay = ({
     setGameStarted,
     gameEnded,
     gameStarted,
+    userAnsweredWrong,
   ]);
 
   return (
@@ -32,6 +38,8 @@ export const GameDisplay = ({
       <QuestionDisplay
         correctCounter={correctCounter}
         setCorrectCounter={setCorrectCounter}
+        userAnsweredWrong={userAnsweredWrong}
+        setUserAnsweredWrong={setUserAnsweredWrong}
       ></QuestionDisplay>
     </div>
   );

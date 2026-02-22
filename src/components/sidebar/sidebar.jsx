@@ -1,11 +1,7 @@
 import styles from "./sidebar.module.css";
+import { levels, safeLevel } from "../../constants/levels";
 
 export const Sidebar = ({ correctCounter }) => {
-  const levels = [
-    100, 200, 500, 1000, 5000, 10000, 25000, 50000, 100000, 500000,
-  ];
-  const safeLevel = 5000;
-
   return (
     <div className={styles.sidebar}>
       <ul>

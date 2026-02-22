@@ -20,6 +20,8 @@ export const Answers = ({
   setTimer,
   usedSkip,
   setUsedSkip,
+  userAnsweredWrong,
+  setUserAnsweredWrong,
 }) => {
   const questionPrefix = ["A.", "B.", "C.", "D."];
   const [availableAnswers] = useState(() => shuffleArray(answers.answers));
@@ -54,6 +56,7 @@ export const Answers = ({
       (answer) => answer.answer === chosenAnswer,
     );
     if (chosenAnswer.isCorrect) setCorrectCounter(correctCounter + 1);
+    else setUserAnsweredWrong(!userAnsweredWrong);
 
     setAnswerPressed(chosenAnswer);
     setTimeout(() => {

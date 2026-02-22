@@ -6,6 +6,7 @@ import { EndGameDisplay } from "./components/endGameDisplay/endGameDisplay";
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameEnded, setGameEnded] = useState(false);
+  const [correctCounter, setCorrectCounter] = useState(0);
 
   return (
     <>
@@ -21,9 +22,11 @@ function App() {
           setGameEnded={setGameEnded}
           gameStarted={gameStarted}
           setGameStarted={setGameStarted}
+          correctCounter={correctCounter}
+          setCorrectCounter={setCorrectCounter}
         ></GameDisplay>
       )}
-      {gameEnded && <EndGameDisplay></EndGameDisplay>}
+      {gameEnded && <EndGameDisplay correctCounter={correctCounter}></EndGameDisplay>}
     </>
   );
 }

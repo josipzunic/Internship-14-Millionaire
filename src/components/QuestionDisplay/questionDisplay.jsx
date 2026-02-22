@@ -7,7 +7,12 @@ import { getRandomArrayElement } from "../../helper/helper";
 import { Timer } from "../timer/timer";
 import timerStyles from "../timer/timer.module.css";
 
-export const QuestionDisplay = ({ correctCounter, setCorrectCounter }) => {
+export const QuestionDisplay = ({
+  correctCounter,
+  setCorrectCounter,
+  userAnsweredWrong,
+  setUserAnsweredWrong,
+}) => {
   const [questionPool, setQuestionPool] = useState([...questions]);
   const [currentQuestion, setCurrentQuestion] = useState(
     getRandomArrayElement(questionPool),
@@ -43,6 +48,8 @@ export const QuestionDisplay = ({ correctCounter, setCorrectCounter }) => {
         setTimer={setTimer}
         usedSkip={usedSkip}
         setUsedSkip={setUsedSkip}
+        userAnsweredWrong={userAnsweredWrong}
+        setUserAnsweredWrong={setUserAnsweredWrong}
       ></Answers>
       {!answerPressed && (
         <Timer
