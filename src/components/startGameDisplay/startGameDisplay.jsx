@@ -7,9 +7,8 @@ export const StartGameDisplay = ({ gameStarted, setGameStarted }) => {
 
   return (
     <div className={styles.startGame}>
-      <button onClick={startGame}>
-        START GAME
-      </button>
+      <h1>WHO WANTS TO BE A MILLIONAIRE</h1>
+      <button onClick={startGame}>START GAME</button>
     </div>
   );
 };

@@ -26,7 +26,13 @@ function App() {
           setCorrectCounter={setCorrectCounter}
         ></GameDisplay>
       )}
-      {gameEnded && <EndGameDisplay correctCounter={correctCounter}></EndGameDisplay>}
+      {gameEnded && (
+        <EndGameDisplay
+          correctCounter={correctCounter}
+          gameEnded={gameEnded}
+          setGameEnded={setGameEnded}
+        ></EndGameDisplay>
+      )}
     </>
   );
 }
