@@ -17,14 +17,16 @@ export const QuestionDisplay = ({ correctCounter, setCorrectCounter }) => {
   const textAccompaningTime = "Time left to answer:";
   const [timer, setTimer] = useState(timeToAnswer);
   let noTimeLeft = false;
+  const [used5050, setUsed5050] = useState(false);
 
   if (timer <= timeWarning) noTimeLeft = true;
-  if(timer === 0) noTimeLeft = false;
+  if (timer === 0) noTimeLeft = false;
 
   return (
     <div className={styles.questionDisplay}>
       <Question question={currentQuestion.question}></Question>
       <Answers
+        key={currentQuestion.question}
         answers={currentQuestion}
         setCurrentQuestion={setCurrentQuestion}
         correctCounter={correctCounter}
@@ -32,9 +34,14 @@ export const QuestionDisplay = ({ correctCounter, setCorrectCounter }) => {
         questions={questions}
         answerPressed={answerPressed}
         setAnswerPressed={setAnswerPressed}
+        used5050={used5050}
+        setUsed5050={setUsed5050}
+        timeToAnswer={timeToAnswer}
+        setTimer={setTimer}
       ></Answers>
       {!answerPressed && (
         <Timer
+          key={currentQuestion.question}
           textAccompaningTime={textAccompaningTime}
           timer={timer}
           setTimer={setTimer}
