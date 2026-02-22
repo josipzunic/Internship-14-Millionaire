@@ -8,16 +8,18 @@ import { Timer } from "../timer/timer";
 import timerStyles from "../timer/timer.module.css";
 
 export const QuestionDisplay = ({ correctCounter, setCorrectCounter }) => {
+  const [questionPool, setQuestionPool] = useState([...questions]);
   const [currentQuestion, setCurrentQuestion] = useState(
-    getRandomArrayElement(questions),
+    getRandomArrayElement(questionPool),
   );
   const [answerPressed, setAnswerPressed] = useState(null);
-  const timeToAnswer = 20;
+  const timeToAnswer = 120;
   const timeWarning = 10;
   const textAccompaningTime = "Time left to answer:";
   const [timer, setTimer] = useState(timeToAnswer);
   let noTimeLeft = false;
   const [used5050, setUsed5050] = useState(false);
+  const [usedSkip, setUsedSkip] = useState(false);
 
   if (timer <= timeWarning) noTimeLeft = true;
   if (timer === 0) noTimeLeft = false;
@@ -26,22 +28,25 @@ export const QuestionDisplay = ({ correctCounter, setCorrectCounter }) => {
     <div className={styles.questionDisplay}>
       <Question question={currentQuestion.question}></Question>
       <Answers
-        key={currentQuestion.question}
+        key={`question-${currentQuestion.id}`}
         answers={currentQuestion}
         setCurrentQuestion={setCurrentQuestion}
         correctCounter={correctCounter}
         setCorrectCounter={setCorrectCounter}
-        questions={questions}
+        questions={questionPool}
+        setQuestionPool={setQuestionPool}
         answerPressed={answerPressed}
         setAnswerPressed={setAnswerPressed}
         used5050={used5050}
         setUsed5050={setUsed5050}
         timeToAnswer={timeToAnswer}
         setTimer={setTimer}
+        usedSkip={usedSkip}
+        setUsedSkip={setUsedSkip}
       ></Answers>
       {!answerPressed && (
         <Timer
-          key={currentQuestion.question}
+          key={`timer-${currentQuestion.id}`}
           textAccompaningTime={textAccompaningTime}
           timer={timer}
           setTimer={setTimer}

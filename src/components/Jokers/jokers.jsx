@@ -1,6 +1,13 @@
-import styles from "./jokers.module.css"
+import styles from "./jokers.module.css";
 
-export const Jokers = ({ used5050, setUsed5050, handleFiftyFifty }) => {
+export const Jokers = ({
+  used5050,
+  setUsed5050,
+  handleFiftyFifty,
+  usedSkip,
+  setUsedSkip,
+  handleSkip,
+}) => {
   const use5050 = () => {
     if (!used5050) {
       setUsed5050(true);
@@ -9,7 +16,10 @@ export const Jokers = ({ used5050, setUsed5050, handleFiftyFifty }) => {
   };
 
   const useSkip = () => {
-    return 0;
+    if (!usedSkip) {
+      setUsedSkip(true);
+      handleSkip();
+    }
   };
 
   return (
@@ -21,7 +31,13 @@ export const Jokers = ({ used5050, setUsed5050, handleFiftyFifty }) => {
       >
         50:50
       </button>
-      <button onClick={useSkip}>skip</button>
+      <button
+        onClick={useSkip}
+        className={usedSkip ? styles.inactive : styles.active}
+        disabled={usedSkip}
+      >
+        skip
+      </button>
     </div>
   );
 };

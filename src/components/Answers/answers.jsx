@@ -11,11 +11,15 @@ export const Answers = ({
   setCorrectCounter,
   setCurrentQuestion,
   questions,
+  setQuestionPool,
   answerPressed,
   setAnswerPressed,
   used5050,
   setUsed5050,
-  timeToAnswer,setTimer
+  timeToAnswer,
+  setTimer,
+  usedSkip,
+  setUsedSkip,
 }) => {
   const questionPrefix = ["A.", "B.", "C.", "D."];
   const [availableAnswers] = useState(() => shuffleArray(answers.answers));
@@ -29,12 +33,22 @@ export const Answers = ({
     setFiftyFiftyResult(removeTwoAnswers(availableAnswers));
   };
 
+  const handleSkip = () => {
+    const updatedQuestions = questions.filter((q) => q !== answers);
+    setQuestionPool(updatedQuestions);
+    const newQuestion = getRandomArrayElement(updatedQuestions);
+    setCorrectCounter(correctCounter + 1);
+    setCurrentQuestion(newQuestion);
+    setFiftyFiftyResult(null);
+    setTimer(timeToAnswer);
+  };
+
   const getChosenAnswer = (e, asnwersArray) => {
-    const currentIndex = questions.indexOf(answers);
-    questions.splice(currentIndex, 1);
+    const updatedQuestions = questions.filter((q) => q !== answers);
+    setQuestionPool(updatedQuestions);
+    const newQuestion = getRandomArrayElement(updatedQuestions);
 
     let chosenAnswer = e.target.textContent.split(" ").slice(1).join(" ");
-    const newQuestion = getRandomArrayElement(questions);
 
     chosenAnswer = asnwersArray.find(
       (answer) => answer.answer === chosenAnswer,
@@ -80,6 +94,9 @@ export const Answers = ({
         used5050={used5050}
         setUsed5050={setUsed5050}
         handleFiftyFifty={handleFiftyFifty}
+        usedSkip={usedSkip}
+        setUsedSkip={setUsedSkip}
+        handleSkip={handleSkip}
       ></Jokers>
     </div>
   );
