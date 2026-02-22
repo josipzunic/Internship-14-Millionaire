@@ -23,7 +23,7 @@ export const Jokers = ({
   };
 
   return (
-    <div>
+    <div className={styles.buttons}>
       <button
         onClick={use5050}
         className={used5050 ? styles.inactive : styles.active}
@@ -36,7 +36,7 @@ export const Jokers = ({
         className={usedSkip ? styles.inactive : styles.active}
         disabled={usedSkip}
       >
-        skip
+        SKIP
       </button>
     </div>
   );

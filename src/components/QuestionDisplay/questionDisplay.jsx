@@ -12,16 +12,17 @@ export const QuestionDisplay = ({
   setCorrectCounter,
   userAnsweredWrong,
   setUserAnsweredWrong,
+  timer,
+  setTimer,
+  timeToAnswer,
 }) => {
   const [questionPool, setQuestionPool] = useState([...questions]);
   const [currentQuestion, setCurrentQuestion] = useState(
     getRandomArrayElement(questionPool),
   );
   const [answerPressed, setAnswerPressed] = useState(null);
-  const timeToAnswer = 120;
   const timeWarning = 10;
   const textAccompaningTime = "Time left to answer:";
-  const [timer, setTimer] = useState(timeToAnswer);
   let noTimeLeft = false;
   const [used5050, setUsed5050] = useState(false);
   const [usedSkip, setUsedSkip] = useState(false);

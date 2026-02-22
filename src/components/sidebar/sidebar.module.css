@@ -2,12 +2,14 @@
     position: absolute;
     left: 50px;
     height: 80vh;
-    background-color: rgb(59, 59, 230);
+    background-color: darkblue;
     padding: 40px 60px 40px 60px;
     border-radius: 20px;
     font-size: 1.5rem;
     text-align: center;
     box-sizing: border-box;
+    color: yellow;
+    border: 2px solid yellow;
 }
 
 .sidebar ul {
@@ -18,10 +20,10 @@
 }
 
 .sidebarLi {
-    border: 2px solid black;
+    border: 2px solid yellow;
     border-radius: 5px;
-    width: 70px;
+    width: auto;
     height: auto;
-    padding: 2px;
+    padding: 3px;
     box-sizing: border-box;
 }

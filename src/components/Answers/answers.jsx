@@ -76,23 +76,18 @@ export const Answers = ({
 
   return (
     <div className={styles.questionLayout}>
-      {Object.values(displayedAnswers).map((answer, index) => (
-        <button
-          key={index}
-          className={`${styles.answers} ${conditionalStyle(answer)}`}
-          onClick={(e) => getChosenAnswer(e, displayedAnswers)}
-        >
-          {`${questionPrefix[index]} ${answer.answer}`}
-        </button>
-      ))}
-      {answerPressed && (
-        <Timer
-          textAccompaningTime={textAccompaningTime}
-          timer={timer}
-          setTimer={setTimerNextQuestion}
-          className={styles.timerNormal}
-        ></Timer>
-      )}
+      <div className={styles.answersGrid}>
+        {Object.values(displayedAnswers).map((answer, index) => (
+          <div key={index} className={styles.answerWrapper}>
+            <button
+              className={`${styles.answers} ${conditionalStyle(answer)}`}
+              onClick={(e) => getChosenAnswer(e, displayedAnswers)}
+            >
+              {`${questionPrefix[index]} ${answer.answer}`}
+            </button>
+          </div>
+        ))}
+      </div>
       <Jokers
         used5050={used5050}
         setUsed5050={setUsed5050}
@@ -101,6 +96,14 @@ export const Answers = ({
         setUsedSkip={setUsedSkip}
         handleSkip={handleSkip}
       ></Jokers>
+      {answerPressed && (
+        <Timer
+          textAccompaningTime={textAccompaningTime}
+          timer={timer}
+          setTimer={setTimerNextQuestion}
+          className={styles.timerNormal}
+        ></Timer>
+      )}
     </div>
   );
 };

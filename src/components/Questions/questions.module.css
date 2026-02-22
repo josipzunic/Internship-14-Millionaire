@@ -1,0 +1,26 @@
+.questionWrapper {
+  clip-path: polygon(
+    20px 0%,
+    calc(100% - 20px) 0%,
+    100% 50%,
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0% 50%
+  );
+  background: yellow;
+  padding: 2px;
+}
+
+.question {
+  clip-path: polygon(
+    20px 0%,
+    calc(100% - 20px) 0%,
+    100% 50%,
+    calc(100% - 20px) 100%,
+    20px 100%,
+    0% 50%
+  );
+  background: darkblue;
+  padding: 1rem;
+  color: white;
+}

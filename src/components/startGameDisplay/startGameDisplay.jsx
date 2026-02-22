@@ -44,7 +44,7 @@ export const StartGameDisplay = ({ gameStarted, setGameStarted }) => {
             <br />
           </div>
           <div className={styles.gridFour}>
-            PROGNOZA: MASU ZABAVE PRI REVIEWANJU :)
+            PROGNOZA: SLIJEDE RELATIVNO JEDNOSTAVNA PITANJA IZ FIZIKE :)
           </div>
         </div>
         <div className={styles.startGame}>

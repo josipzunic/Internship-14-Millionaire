@@ -4,6 +4,7 @@ import { levels, maxReward, safeIndex } from "../../constants/levels";
 
 export const EndGameDisplay = ({
   correctCounter,
+  setCorrectCounter,
   gameEnded,
   setGameEnded,
 }) => {
@@ -15,6 +16,7 @@ export const EndGameDisplay = ({
 
   const playAgain = () => {
     setGameEnded(!gameEnded);
+    setCorrectCounter(0);
   };
 
   return (

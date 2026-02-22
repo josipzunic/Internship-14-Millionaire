@@ -1,3 +1,9 @@
+import styles from "./questions.module.css";
+
 export const Question = ({ question }) => {
-  return <div>{question}</div>;
+  return (
+    <div className={styles.questionWrapper}>
+      <div className={styles.question}>{question}</div>
+    </div>
+  );
 };

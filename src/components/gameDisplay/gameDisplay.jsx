@@ -10,6 +10,9 @@ export const GameDisplay = ({
   setGameStarted,
   correctCounter,
   setCorrectCounter,
+  timer,
+  setTimer,
+  timeToAnswer,
 }) => {
   const [userAnsweredWrong, setUserAnsweredWrong] = useState(false);
   const pointsToWin = 10;
@@ -21,6 +24,10 @@ export const GameDisplay = ({
     } else if (userAnsweredWrong) {
       setGameEnded(!gameEnded);
       setGameStarted(!gameStarted);
+    } else if (timer === 0) {
+      setGameEnded(!gameEnded);
+      setGameStarted(!gameStarted);
+      setTimer(timeToAnswer);
     }
   }, [
     correctCounter,
@@ -30,6 +37,9 @@ export const GameDisplay = ({
     gameEnded,
     gameStarted,
     userAnsweredWrong,
+    timer,
+    timeToAnswer,
+    setTimer,
   ]);
 
   return (
@@ -40,6 +50,9 @@ export const GameDisplay = ({
         setCorrectCounter={setCorrectCounter}
         userAnsweredWrong={userAnsweredWrong}
         setUserAnsweredWrong={setUserAnsweredWrong}
+        timer={timer}
+        setTimer={setTimer}
+        timeToAnswer={timeToAnswer}
       ></QuestionDisplay>
     </div>
   );

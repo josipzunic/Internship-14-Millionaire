@@ -1,9 +1,26 @@
+.buttons {
+  margin-top: 4rem;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
 .active {
-    background-color: green;
-    cursor: pointer;
+  background-color: purple;
+  cursor: pointer;
 }
 
 .inactive {
-    background-color: red;
-    cursor: auto;
+  background-color: red;
+  cursor: auto;
+}
+
+.active,
+.inactive {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  width: auto;
+  font-size: 1.5rem;
+  color: white;
 }
