@@ -1,19 +1,30 @@
 import { useState } from "react";
-import styles from "./App.module.css";
-import { QuestionDisplay } from "./components/QuestionDisplay/questionDisplay";
-import { Sidebar } from "./components/sidebar/sidebar";
+import { GameDisplay } from "./components/gameDisplay/gameDisplay";
+import { StartGameDisplay } from "./components/startGameDisplay/startGameDisplay";
+import { EndGameDisplay } from "./components/endGameDisplay/endGameDisplay";
 
 function App() {
-  const [correctCounter, setCorrectCounter] = useState(0);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [gameEnded, setGameEnded] = useState(false);
 
   return (
-    <div className={styles.mainDisplay}>
-      <Sidebar correctCounter={correctCounter}></Sidebar>
-      <QuestionDisplay
-        correctCounter={correctCounter}
-        setCorrectCounter={setCorrectCounter}
-      ></QuestionDisplay>
-    </div>
+    <>
+      {!gameStarted && !gameEnded && (
+        <StartGameDisplay
+          gameStarted={gameStarted}
+          setGameStarted={setGameStarted}
+        ></StartGameDisplay>
+      )}
+      {gameStarted && (
+        <GameDisplay
+          gameEnded={gameEnded}
+          setGameEnded={setGameEnded}
+          gameStarted={gameStarted}
+          setGameStarted={setGameStarted}
+        ></GameDisplay>
+      )}
+      {gameEnded && <EndGameDisplay></EndGameDisplay>}
+    </>
   );
 }
 
